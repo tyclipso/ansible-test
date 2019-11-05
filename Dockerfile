@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-LABEL author="Christoph Kepler <christoph.kepler@tyclipso.net>"
+LABEL maintainer="Christoph Kepler <christoph.kepler@tyclipso.net>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
