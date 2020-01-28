@@ -22,6 +22,7 @@ build-bleeding:
   stage: docker-build
   before_script:
     - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - docker pull $DOCKER_IMAGE_NAME:bleeding || true
     - docker build --cache-from $DOCKER_IMAGE_NAME:bleeding -t $DOCKER_IMAGE_NAME:$CI_COMMIT_SHORT_SHA -t $DOCKER_IMAGE_NAME:bleeding .
@@ -35,6 +36,7 @@ build-tags:
   stage: docker-build
   before_script:
     - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - docker pull $DOCKER_IMAGE_NAME:latest || true
     - docker build --cache-from $DOCKER_IMAGE_NAME:latest -t $DOCKER_IMAGE_NAME:$CI_COMMIT_TAG -t $DOCKER_IMAGE_NAME:latest .
