@@ -26,6 +26,8 @@ build-bleeding:
   script:
     - docker pull $CI_REGISTRY_IMAGE:bleeding || true
     - docker build --cache-from $CI_REGISTRY_IMAGE:bleeding -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA -t $CI_REGISTRY_IMAGE:bleeding .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $CI_REGISTRY_IMAGE:bleeding
   only:
     refs:
       - master
