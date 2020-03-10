@@ -3,6 +3,7 @@ LABEL maintainer="Christoph Kepler <christoph.kepler@tyclipso.net>"
 
 SHELL [ "/bin/ash" , "-euxo", "pipefail", "-c"]
 
+# hadolint ignore=DL3018,SC2086
 RUN apk add --no-cache --virtual .build-deps \
       gcc=9.2.0-r3 \
       make=4.2.1-r2 \
