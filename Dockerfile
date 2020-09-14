@@ -8,7 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
       gcc=9.3.0-r2 \
       make=4.3-r0 \
       libffi-dev=3.3-r2 \
-      musl-dev=1.1.24-r1 \
+      musl-dev=1.1.24-r9 \
       openssl-dev=1.1.1d-r3 && \
 		pip install --upgrade \
       ansible-lint==4.3.0 && \
