@@ -10,8 +10,8 @@ RUN apk add --no-cache --virtual .build-deps \
       libffi-dev=3.2.1-r6 \
       musl-dev=1.1.24-r1 \
       openssl-dev=1.1.1d-r3 && \
-    pip install --upgrade \
-        ansible-lint==4.2.0 && \
+		pip install --upgrade \
+      ansible-lint==4.3.0 && \
     runDeps="$( \
       scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib \
       | tr ',' '\n' \
