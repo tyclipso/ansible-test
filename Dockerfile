@@ -5,7 +5,7 @@ SHELL [ "/bin/ash" , "-euxo", "pipefail", "-c"]
 
 # hadolint ignore=DL3018,SC2086
 RUN apk add --no-cache --virtual .build-deps \
-      gcc=9.2.0-r3 \
+      gcc=9.3.0-r2 \
       make=4.2.1-r2 \
       libffi-dev=3.2.1-r6 \
       musl-dev=1.1.24-r1 \
