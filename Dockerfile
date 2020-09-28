@@ -5,11 +5,11 @@ SHELL [ "/bin/ash" , "-euxo", "pipefail", "-c"]
 
 # hadolint ignore=DL3018,SC2086
 RUN apk add --no-cache --virtual .build-deps \
-      gcc=9.3.0-r2 \
-      make=4.3-r0 \
-      libffi-dev=3.3-r2 \
-      musl-dev=1.1.24-r9 \
-      openssl-dev=1.1.1g-r0 && \
+      gcc \
+      make \
+      libffi-dev \
+      musl-dev \
+      openssl-dev && \
 		pip install --upgrade \
       ansible-lint==4.3.0 && \
     runDeps="$( \
