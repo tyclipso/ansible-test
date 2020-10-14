@@ -26,6 +26,7 @@ jobs:
         env:
           VALIDATE_DOCKER: yes
           VALIDATE_DOCKER_HADOLINT: yes
+          FILTER_REGEX_INCLUDE: .*(Dockerfile).*
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
