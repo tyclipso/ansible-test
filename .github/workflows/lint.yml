@@ -1,6 +1,6 @@
 ---
 
-name: Super-lint Project
+name: Super-lint project
 
 on:
   push: {}
