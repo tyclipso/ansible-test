@@ -65,15 +65,16 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into GitHub Container Registry
-      # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
         run: echo "${{ secrets.CR_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image to GitHub Container Registry
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_ID_LONG=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME/$IMAGE_NAME
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          IMAGE_ID_LONG=$(echo $IMAGE_ID_LONG | tr '[A-Z]' '[a-z]')
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -89,7 +90,11 @@ jobs:
           echo VERSION=$VERSION
           echo VERSION_ROLLING=$VERSION_ROLLING
 
+          docker tag $IMAGE_NAME $IMAGE_ID_LONG:$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID_LONG:$VERSION_ROLLING
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_ROLLING
+          docker push $IMAGE_ID_LONG:$VERSION
           docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID_LONG:$VERSION_ROLLING
           docker push $IMAGE_ID:$VERSION_ROLLING
