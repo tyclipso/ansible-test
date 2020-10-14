@@ -24,9 +24,10 @@ jobs:
       - name: Run super-Linter for Dockerfile
         uses: github/super-linter@v3.13.0
         env:
-          VALIDATE_ALL_CODEBASE: yes
           VALIDATE_DOCKER: yes
           VALIDATE_DOCKER_HADOLINT: yes
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
