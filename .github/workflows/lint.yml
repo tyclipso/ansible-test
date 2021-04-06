@@ -19,3 +19,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: yes
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JSCPD: no
