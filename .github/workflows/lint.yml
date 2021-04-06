@@ -3,7 +3,9 @@
 name: Super-lint project
 
 on:
-  push: {}
+  push:
+    branches:
+      - '**'
 
 jobs:
   lint:
