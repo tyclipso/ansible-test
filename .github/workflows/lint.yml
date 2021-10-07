@@ -8,8 +8,23 @@ on:
       - '**'
 
 jobs:
+  lint-prs:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Run Super-Linter for everything
+        uses: github/super-linter@v3.15.5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JSCPD: false
   lint:
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
