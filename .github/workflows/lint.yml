@@ -5,7 +5,7 @@ name: Super-lint project
 on:
   push:
     branches:
-      - '**'
+      - main
   pull_request:
 
 jobs:
