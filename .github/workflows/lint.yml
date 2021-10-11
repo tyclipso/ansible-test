@@ -5,13 +5,11 @@ name: Super-lint project
 on:
   push:
     branches:
-      - main
-  pull_request:
+      - "**"
 
 jobs:
-  lint-prs:
+  lint:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,21 +18,6 @@ jobs:
       - name: Run Super-Linter for everything
         uses: github/super-linter@v4
         env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_JSCPD: false
-  lint:
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Run Super-Linter for everything new
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JSCPD: false
