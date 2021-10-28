@@ -25,7 +25,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## Contributors
 
-See [CONTRIBUTORS](CONTRIBUTORS)
+See [CONTRIBUTORS](CONTRIBUTORS.md)
 
 ## Is it any good
 
