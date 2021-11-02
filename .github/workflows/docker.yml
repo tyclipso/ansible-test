@@ -89,6 +89,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
+            type=edge
             type=sha,prefix=
 
       - name: Build and push Docker image (tag)
@@ -103,4 +104,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}:bleeding,${{ steps.meta_bleeding.outputs.tags }}
+          tags: ${{ steps.meta_bleeding.outputs.tags }}
